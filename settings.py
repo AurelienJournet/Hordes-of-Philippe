@@ -18,3 +18,4 @@ BACKGROUND_TRANSLATION_SPEED_RATIO = 10  # exprimée par rapport à la vitesse d
 
 # Couleurs
 BLACK = 0, 0, 0
+RED = 255, 0, 0

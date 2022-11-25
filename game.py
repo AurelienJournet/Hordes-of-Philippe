@@ -16,6 +16,9 @@ class Game:
 
     def __init__(self):
         pygame.init()
+        pygame.display.set_caption('Hordes of Philippe')
+        icon = pygame.image.load('icon.png')
+        pygame.display.set_icon(icon)
         self.__size = self.__width, self.__height = settings.SCREEN_SIZE
         self.__display = pygame.display.set_mode(self.__size)
         self.__game_clock = pygame.time.Clock()

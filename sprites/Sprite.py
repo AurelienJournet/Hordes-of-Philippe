@@ -50,6 +50,11 @@ class Sprite:
         else:
             return False
 
+    def reset_sprite(self):
+        if self.__virtual_frames_number:
+            self.__virtual_current_image_index = 0
+        self.__current_image_index = 0
+
     def draw_next_image_with_position(self, x: int, y: int) -> pygame.Rect:
 
         self.__display_screen.blit(self.__image_list[self.__current_image_index]["image"],

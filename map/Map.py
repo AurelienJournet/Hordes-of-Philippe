@@ -9,8 +9,7 @@ G_HORIZ_ELEMENTS_TO_DISPLAY = 10
 
 # TODO : pouvoir afficher des objets non collisionables : ne pas les envoyer dans le get_displayed_rects
 
-# TODO : un méthode pour avoir la translation
-
+# TODO : pouvoir intégrer des objets qui provoquent des dommages
 
 class Map:
 

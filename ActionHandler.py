@@ -86,14 +86,16 @@ class ActionHandler:
                 else:
                     if not self.__map.has_reached_limit(not forward):
                         self.__map.translate(allowed_move_x)
-
-                        # TODO :gérer les soucis de trasnlation du background qui peut se barrer
                         self.__background.translate(- background_translation)
                     else:
                         self.__player.move(pixels_x=allowed_move_x, pixels_y=0)
 
-        elif keys[pygame.K_k]:
+        if keys[pygame.K_k]:
             self.__player.kill()
+
+        if keys[pygame.K_LCTRL]:
+            self.__player.shoot()
+            # TODO : ajouter la gestion des conséquences du tir avec le vecteur retourné par la méthode
 
         if keys[pygame.K_SPACE]:
             self.make_player_jump()
@@ -141,3 +143,6 @@ class ActionHandler:
     def is_entity_out_of_display(self):
         pass
         # TODO : permet de kill les entités qui sont tombées par exemple
+
+    # TODO : voir comment faire disparaître les morts
+
