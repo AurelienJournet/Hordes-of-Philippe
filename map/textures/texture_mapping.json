@@ -5,5 +5,5 @@
       "U": "textures/Rock2.png",
       "P": "textures/Plants.png"
   },
-  "non_collidable": ["T", "U", "P"]
+  "non_collidable": ["U", "P"]
 }

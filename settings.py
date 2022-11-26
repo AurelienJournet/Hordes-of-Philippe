@@ -16,6 +16,9 @@ JUMP_VERT_SPEED = 15  # Vitesse verticale de saut exprimée en pixels par frame
 # Background
 BACKGROUND_TRANSLATION_SPEED_RATIO = 10  # exprimée par rapport à la vitesse du joueur
 
+# Map
+G_HORIZ_ELEMENTS_TO_DISPLAY = 10
+
 # Couleurs
 BLACK = 0, 0, 0
 RED = 255, 0, 0

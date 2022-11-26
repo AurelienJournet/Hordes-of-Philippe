@@ -3,11 +3,7 @@ from typing import List
 
 import pygame
 from pathlib import Path
-
-#TODO : à foutre dans les settings
-G_HORIZ_ELEMENTS_TO_DISPLAY = 10
-
-# TODO : pouvoir afficher des objets non collisionables : ne pas les envoyer dans le get_displayed_rects
+import settings
 
 # TODO : pouvoir intégrer des objets qui provoquent des dommages
 
@@ -19,7 +15,7 @@ class Map:
         self.load_map_definition()
 
         self.__element_height = int(self.__game.get_height() / len(self.__map_definition))
-        self.__element_width = int(self.__game.get_width() / G_HORIZ_ELEMENTS_TO_DISPLAY)
+        self.__element_width = int(self.__game.get_width() / settings.G_HORIZ_ELEMENTS_TO_DISPLAY)
         self.__textures_definition = None
         self.load_textures_definition()
         self.__translation = 0
@@ -79,7 +75,7 @@ class Map:
     def display(self):
         # On n'affiche que n unités horizontales de la MAP, on doit donc calculer la taille des élément
         self.__collidable_rects = []
-        for i in range(int(G_HORIZ_ELEMENTS_TO_DISPLAY + (self.__translation / self.__element_width)) + 1):
+        for i in range(int(settings.G_HORIZ_ELEMENTS_TO_DISPLAY + (self.__translation / self.__element_width)) + 1):
             for j in range(len(self.__map_definition)):
 
                 to_draw = self.__map_definition[j].split(",")[i]

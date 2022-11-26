@@ -18,8 +18,9 @@ class Player:
 
     def __init__(self, game: pygame.Surface):
 
-        #TODO : pour init un "character" :
+        # TODO : pour init un "character" :
         # - dossier des Sprites
+        # - dossier des sons
         # - position sur la MAP
         # - points de vie
         # - points d'attaque
@@ -27,12 +28,12 @@ class Player:
         # - debug du shooting
 
         self.__game = game
-        self.__sprite_run = Sprite(self.__game, "sprites/phillipe/Run", 30, forced_height=200)
-        self.__sprite_death = Sprite(self.__game, "sprites/phillipe/Death", 30, forced_height=200)
-        self.__sprite_idle = Sprite(self.__game, "sprites/phillipe/Idle", 30, forced_height=200)
-        self.__sprite_jump = Sprite(self.__game, "sprites/phillipe/Jump", 30, forced_height=200)
-        self.__sprite_fall = Sprite(self.__game, "sprites/phillipe/Fall", 30, forced_height=200)
-        self.__sprite_shoot = Sprite(self.__game, "sprites/phillipe/Shoot", 10, forced_height=200)
+        self.__sprite_run = Sprite(self.__game, "sprites/mike/Run", 30, forced_height=200)
+        self.__sprite_death = Sprite(self.__game, "sprites/mike/Death", 30, forced_height=200)
+        self.__sprite_idle = Sprite(self.__game, "sprites/mike/Idle", 30, forced_height=200)
+        self.__sprite_jump = Sprite(self.__game, "sprites/mike/Jump", 30, forced_height=200)
+        self.__sprite_fall = Sprite(self.__game, "sprites/mike/Fall", 30, forced_height=200)
+        self.__sprite_shoot = Sprite(self.__game, "sprites/mike/Shoot", 10, forced_height=200)
 
         self.__player_rect = None
         self.__position = [0, 0]
@@ -47,11 +48,10 @@ class Player:
         # A conditionner éventuellement avec un attribut en paramètre (can_double_jump ?)
         self.__is_double_jumping = False
 
-        # TODO : à voir quoi en faire, sion garde
+        # TODO : à voir quoi en faire, si on garde
         self.__debug_shooting_activated = True
-        self.__gun_position_offset_right = [230, 140]
-        self.__max_distance_shooting = sqrt(self.__game.get_height() * self.__game.get_height() +
-                                            self.__game.get_width() * self.__game.get_width())
+        self.__gun_position_offset_right = [220, 140]
+        self.__max_distance_shooting = sqrt(self.__game.get_height() ** 2 + self.__game.get_width() ** 2)
 
     def get_speed(self) -> [int, int]:
         return self.__speed
@@ -78,7 +78,7 @@ class Player:
     def set_jumping(self, is_jumping: bool):
         self.__is_jumping = is_jumping
         if is_jumping:
-            Sounds.play_sound("library/tg.mp3")
+            Sounds.play_sound("library/jesais.mp3")
 
     def is_double_jumping(self) -> bool:
         return self.__is_double_jumping
@@ -86,7 +86,7 @@ class Player:
     def set_double_jumping(self, is_double_jumping: bool):
         self.__is_double_jumping = is_double_jumping
         if is_double_jumping:
-            Sounds.play_sound("library/viensici2.mp3")
+            Sounds.play_sound("library/viensici.mp3")
 
     def get_player_rect(self) -> pygame.Rect:
         return self.__player_rect
@@ -103,6 +103,7 @@ class Player:
         self.__is_shooting = is_shooting
         if is_shooting:
             Sounds.play_sound("library/panpan.mp3")
+            Sounds.play_sound("library/salaud.mp3")
 
     def is_shooting(self) -> bool:
         return self.__is_shooting
@@ -142,6 +143,7 @@ class Player:
 
     def display(self):
 
+        # TODO : voir comment adapter le sprite de tir quand on court ou saute
         if self.is_shooting() and self.__debug_shooting_activated:
             pygame.draw.line(self.__game, settings.RED, *self.calculate_shoot_vector())
 

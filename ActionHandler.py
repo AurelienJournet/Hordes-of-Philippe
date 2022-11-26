@@ -7,7 +7,7 @@ from map.Map import Map
 from player.Player import Player
 from background.Background import Background
 import settings
-
+import tools
 
 class ActionHandler:
 
@@ -94,8 +94,13 @@ class ActionHandler:
             self.__player.kill()
 
         if keys[pygame.K_LCTRL]:
-            self.__player.shoot()
             # TODO : ajouter la gestion des conséquences du tir avec le vecteur retourné par la méthode
+            # TODO : afficher les impacts
+            shoot_vector = self.__player.shoot()
+            if shoot_vector:
+                a = tools.does_vector_collide_rects(shoot_vector[0], shoot_vector[1], self.__map.get_collidable_rects())
+
+                print(a)
 
         if keys[pygame.K_SPACE]:
             self.make_player_jump()
