@@ -10,10 +10,6 @@ def calculate_distance_between_points(point_a: tuple, point_b: tuple) -> float:
 
 def does_vector_collide_rects(vector_start: tuple, vector_end: tuple, rects_list: List[pygame.Rect]) -> float:
 
-    # TODO : documenter : retourne la distance avec le rectangle collisionné le plus proche (distance par rapport au vector_start
-    # TODO : ainsi, on pourra savoir par exemple si le vecteur a touché un mur avant de toucher un ennemi
-    # TODO : retourne -1 si pas de collision
-
     min_dist = -1
     # print(vector_start, vector_end)
     for rect in rects_list:

@@ -1,11 +1,6 @@
 import pygame
-import settings
 from pathlib import Path
 
-import settings
-
-
-#TODO : ajouter la possibilité de scaler les sprites à la taille désirée
 
 class Sprite:
 
@@ -75,7 +70,3 @@ class Sprite:
                                    self.__image_list[-1]["rect"].move(x, y))
 
         return self.__image_list[-1]["rect"].move(x, y)
-
-        # dessiner sur le display
-
-

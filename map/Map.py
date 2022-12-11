@@ -32,6 +32,15 @@ class Map:
             raise Exception("Définition de la map incorrection : nombre d'éléments incohérent sur une ou plusieurs "
                             "lignes")
 
+    def get_width(self) -> int:
+        return len(self.__map_definition[-1].split(",")) * self.__element_width
+
+    def get_height(self) -> int:
+        return len(self.__map_definition) * self.__element_height
+
+    def get_translation(self) -> int:
+        return self.__translation
+
     def load_textures_definition(self):
 
         read_texture_mapping = Path(Path(__file__).parent, "textures/texture_mapping.json").read_text()
@@ -45,8 +54,7 @@ class Map:
     def translate(self, pixels):
 
         new_translation = self.__translation + pixels
-        allowed_translation_right = len(self.__map_definition[-1].split(",")) * self.__element_width - \
-            (self.__translation + self.__game.get_width())
+        allowed_translation_right = self.get_width() - self.__game.get_width()
 
         if pixels > 0 and not self.__right_limit_reached:
             if new_translation > allowed_translation_right:
@@ -75,7 +83,9 @@ class Map:
     def display(self):
         # On n'affiche que n unités horizontales de la MAP, on doit donc calculer la taille des élément
         self.__collidable_rects = []
-        for i in range(int(settings.G_HORIZ_ELEMENTS_TO_DISPLAY + (self.__translation / self.__element_width)) + 1):
+
+        # for i in range(int(settings.G_HORIZ_ELEMENTS_TO_DISPLAY + (self.__translation / self.__element_width)) + 1):
+        for i in range(len(self.__map_definition[0].split(","))):
             for j in range(len(self.__map_definition)):
 
                 to_draw = self.__map_definition[j].split(",")[i]
